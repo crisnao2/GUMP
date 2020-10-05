@@ -1269,15 +1269,16 @@ class GUMP
      *
      * @param string $field
      * @param array $input
-     * @param array $params
-     * @param mixed $value
+     * @param mixed $params
      *
      * @return bool
      */
-    protected function validate_between_len($field, $input, array $params, $value)
+    protected function validate_between_len($field, $input, $params)
     {
-        return $this->validate_min_len($field, $input, [$params[0]], $value)
-            && $this->validate_max_len($field, $input, [$params[1]], $value);
+        list($min, $max) = explode(';', $params);
+
+        return $this->validate_min_len($field, $input, $min)
+            && $this->validate_max_len($field, $input, $max);
     }
 
     /**
