@@ -1263,6 +1263,24 @@ class GUMP
     }
 
     /**
+     * Determine if the provided value length is between min and max values.
+     *
+     * @example_parameter 3;11
+     *
+     * @param string $field
+     * @param array $input
+     * @param array $params
+     * @param mixed $value
+     *
+     * @return bool
+     */
+    protected function validate_between_len($field, $input, array $params, $value)
+    {
+        return $this->validate_min_len($field, $input, [$params[0]], $value)
+            && $this->validate_max_len($field, $input, [$params[1]], $value);
+    }
+
+    /**
      * Determine if the provided value contains only alpha characters.
      *
      * Usage: '<index>' => 'alpha'
@@ -2551,4 +2569,5 @@ class GUMP
         //     throw new \Exception($ex->getMessage());
         // }
     }
+
 }
