@@ -32,7 +32,7 @@
         "ext-intl": "*",
         "ext-bcmath": "*",
         "ext-iconv": "*",
-        "respect/validation": "~1.1|^2"
+        "respect/validation": "^2.0"
     },
     "autoload-dev": {
         "psr-4": { "Tests\\": "tests/" }
