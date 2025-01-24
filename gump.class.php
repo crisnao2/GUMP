@@ -1181,12 +1181,13 @@ class GUMP
      * @param string $field
      * @param array  $input
      * @param array $params
+     * @param mixed $value
      *
      * @return bool
      */
-    protected function validate_contains($field, array $input, array $params)
+    protected function validate_contains($field, array $input, array $params, $value = null)
     {
-        $value = mb_strtolower(trim($input[$field]));
+        $value = mb_strtolower(trim($value));
 
         $params = array_map(static function ($value) {
             return mb_strtolower(trim($value));
@@ -1207,9 +1208,9 @@ class GUMP
      *
      * @return bool
      */
-    protected function validate_contains_list($field, $input, array $params)
+    protected function validate_contains_list($field, $input, array $params, $value = null)
     {
-        return $this->validate_contains($field, $input, $params);
+        return $this->validate_contains($field, $input, $params, $value);
     }
 
     /**
@@ -1224,9 +1225,9 @@ class GUMP
      *
      * @return bool
      */
-    protected function validate_doesnt_contain_list($field, $input, array $params)
+    protected function validate_doesnt_contain_list($field, $input, array $params, $value = null)
     {
-        return !$this->validate_contains($field, $input, $params);
+        return !$this->validate_contains($field, $input, $params, $value);
     }
 
     /**
